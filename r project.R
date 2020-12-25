@@ -1,6 +1,3 @@
-#Name ;- Rahul nyati
-# You can also see this project on my youtube channel 
-# Youtube channel link:-https://youtu.be/u0LWnRXYXDc
 library (dplyr)
 #Data Manipulation for Project
 #Creating /Calling Database
@@ -8,7 +5,6 @@ db<-read.csv("world-happiness-data.csv")
 View(db)
 #Lets consider data does not have any error
 db<-db[,-5]
-d
 distinct(db, Region)
 #Lets create a new column continent for classification
 db$continent<-NA
@@ -29,6 +25,7 @@ hp<-aggregate(db[,4:11],list(db$continent),mean)
 View(hp)
 #Data Visualisation part -1
 #Data Visualisation for Happiness Report
+install.packages("ggplot2")
 library (ggplot2)
 install.packages("corrgram")
 library (corrgram)
@@ -96,13 +93,11 @@ install.packages("rworldmap")
 library (rworldmap)
 install.packages("sp")
 library(sp)
-d<-data.frame(country=db$Country, value=db$Economy..GDP.per.Capita.)
-n<-joinData2Map(d,joinCode="NAME",nameJoinColumn="country")
+d<-data.frame(Country=db$Country, value=db$Economy..GDP.per.Capita.)
+n<-joinCountryData2Map(d,joinCode="NAME",nameJoinColumn="Country")
 mapCountryData(n,namecolumnaPlot="value",maptitle="world map for GDP 2015", colourPalette="terrain")
 #Map for Health Expectancy
-d<-data.frame(country=db$Country, value=db$Health..Life.Expectancy.)
-d
-n<-joinCountryData2Map(d, joinCode="NAME", nameJoinColumn="country")
+d<-data.frame(country=db$Country, value=db$Health..and.Life.Expectancy.)
+n<-joinCountryData2Map (d, joincode="NAME", nameJoincolumn="Country")
 mapCountryData (n, namecolumnaPlot="value", maptitle="world map for Health & Life Expectancy", colourPalette="terraia")
-
 
